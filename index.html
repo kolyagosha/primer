@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Alphabet Poetry</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .alphabet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .letter-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 3px solid transparent;
+        }
+
+        .letter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            border-color: #667eea;
+        }
+
+        .letter-card.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .letter-card.inactive {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .letter-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .active .letter-title {
+            color: white;
+        }
+
+        .letter-preview {
+            width: 100%;
+            height: 120px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .letter-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .letter-preview.placeholder {
+            background: linear-gradient(45deg, #ddd, #eee);
+            color: #999;
+            font-size: 1.1rem;
+        }
+
+        .poem-preview {
+            font-style: italic;
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .active .poem-preview {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            margin-top: 50px;
+        }
+
+        .share-buttons {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .share-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .share-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .alphabet-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 15px;
+            }
+            
+            .letter-card {
+                padding: 15px;
+            }
+            
+            .letter-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Digital Alphabet Poetry</h1>
+            <p>Where pixels meet poetry in the digital age</p>
+        </div>
+
+        <div class="alphabet-grid" id="alphabetGrid">
+            <!-- Letter A -->
+            <div class="letter-card active" onclick="openLetter('A')">
+                <div class="letter-title">A</div>
+                <div class="letter-preview">
+                    <div style="background: #ff6b6b; width: 60px; height: 60px; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Avatar</div>
+                </div>
+                <div class="poem-preview">
+                    A is for Avatar, my digital twin,<br>
+                    He dines with a duck...
+                </div>
+            </div>
+
+            <!-- Letter B -->
+            <div class="letter-card active" onclick="openLetter('B')">
+                <div class="letter-title">B</div>
+                <div class="letter-preview">
+                    <div style="background: #4ecdc4; width: 60px; height: 60px; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Blank</div>
+                </div>
+                <div class="poem-preview">
+                    B is for Blank, the stare in the night,<br>
+                    When endless feeds...
+                </div>
+            </div>
+
+            <!-- Остальные буквы (пока неактивные) -->
+        </div>
+
+        <div class="share-buttons">
+            <a href="#" class="share-btn">📧 Subscribe for Updates</a>
+            <a href="#" class="share-btn">📱 Share Collection</a>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 Digital Alphabet Poetry. Creating connections in the pixel age.</p>
+        </div>
+    </div>
+
+    <script>
+        // Генерируем карточки для остальных букв
+        const letters = 'CDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+        const grid = document.getElementById('alphabetGrid');
+        
+        letters.forEach(letter => {
+            const card = document.createElement('div');
+            card.className = 'letter-card inactive';
+            card.innerHTML = `
+                <div class="letter-title">${letter}</div>
+                <div class="letter-preview placeholder">
+                    Coming Soon
+                </div>
+                <div class="poem-preview">
+                    ${letter} is for... (in development)
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        function openLetter(letter) {
+            if (letter === 'A' || letter === 'B') {
+                // Для готовых букв открываем отдельную страницу
+                window.location.href = `${letter.toLowerCase()}.html`;
+            } else {
+                alert(`Letter ${letter} is coming soon! Stay tuned for updates.`);
+            }
+        }
+
+        // Простая анимация появления карточек
+        window.addEventListener('load', () => {
+            const cards = document.querySelectorAll('.letter-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'all 0.5s ease';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
